@@ -88,6 +88,7 @@ public class ScenarioOutline {
     public List<Scenario> getScenarios(FeatureRuntime fr) {
         List<Scenario> list = new ArrayList();
         boolean examplesHaveTags = examplesTables.stream().anyMatch(t -> !t.getTags().isEmpty());
+        int tableIndex = 0;
         for (ExamplesTable examples : examplesTables) {
             boolean selectedForExecution = false;
             if (fr != null && examplesHaveTags && fr.caller.isNone()) {
@@ -105,12 +106,14 @@ public class ScenarioOutline {
                 Table table = examples.getTable();
                 if (table.isDynamic()) {
                     Scenario scenario = toScenario(table.getDynamicExpression(), -1, table.getLineNumberForRow(0), examples.getTags());
+                    scenario.setExampleTableIndex(tableIndex);
                     list.add(scenario);
                 } else {
                     int rowCount = table.getRows().size();
                     for (int i = 1; i < rowCount; i++) { // don't include header row
                         int exampleIndex = i - 1; // next line will set exampleIndex on scenario
                         Scenario scenario = toScenario(null, exampleIndex, table.getLineNumberForRow(i), examples.getTags());
+                        scenario.setExampleTableIndex(tableIndex);
                         scenario.setExampleData(table.getExampleData(exampleIndex)); // and we set exampleData here
                         list.add(scenario);
                         for (String key : table.getKeys()) {
@@ -119,6 +122,7 @@ public class ScenarioOutline {
                     }
                 }
             }
+        tableIndex++;
         }
         return list;
     }
