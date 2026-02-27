@@ -56,9 +56,14 @@ public class Scenario {
     }
 
     public Scenario(Feature feature, FeatureSection section, int exampleIndex) {
+        this(feature, section, exampleIndex, -1);
+    }
+
+    public Scenario(Feature feature, FeatureSection section, int exampleIndex, int exampleTableIndex) {
         this.feature = feature;
         this.section = section;
         this.exampleIndex = exampleIndex;
+        this.exampleTableIndex = exampleTableIndex;
     }
 
     public boolean isEqualTo(Scenario other) {
@@ -91,14 +96,13 @@ public class Scenario {
 
     // only called for dynamic scenarios
     public Scenario copy(int exampleIndex) {
-        Scenario s = new Scenario(feature, section, exampleIndex);
+        Scenario s = new Scenario(feature, section, exampleIndex, exampleTableIndex);
         s.name = name;
         s.description = description;
         s.tags = tags;
         s.line = line;
         s.dynamicExpression = dynamicExpression;
         s.steps = new ArrayList(steps.size());
-        s.exampleTableIndex = exampleTableIndex;
         for (Step step : steps) {
             Step temp = new Step(s, step.getIndex());
             s.steps.add(temp);
