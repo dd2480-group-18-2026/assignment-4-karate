@@ -58,6 +58,12 @@ public class ScenarioResult implements Comparable<ScenarioResult> {
         if (delta != 0) {
             return delta;
         }
+
+        int t = scenario.getExampleTableIndex() - sr.scenario.getExampleTableIndex();
+        if (t != 0) {
+            return t;
+        }
+
         return scenario.getExampleIndex() - sr.scenario.getExampleIndex();
     }
 
@@ -154,6 +160,10 @@ public class ScenarioResult implements Comparable<ScenarioResult> {
         int exampleIndex = (Integer) map.get("exampleIndex");
         FeatureSection section = feature.getSection(sectionIndex);
         Scenario scenario = new Scenario(feature, section, exampleIndex);
+        Object eti = map.get("exampleTableIndex");
+        if (eti instanceof Number) {
+            scenario.setExampleTableIndex(((Number) eti).intValue());
+        }
         if (section.isOutline()) {
             scenario.setTags(section.getScenarioOutline().getTags());
             scenario.setDescription(section.getScenarioOutline().getDescription());
@@ -216,6 +226,10 @@ public class ScenarioResult implements Comparable<ScenarioResult> {
         //======================================================================
         map.put("sectionIndex", scenario.getSection().getIndex());
         map.put("exampleIndex", scenario.getExampleIndex());
+        int eti = scenario.getExampleTableIndex();
+        if (eti != -1) {
+            map.put("exampleTableIndex", eti);
+        }
         Map<String, Object> exampleData = scenario.getExampleData();
         if (exampleData != null) {
             map.put("exampleData", exampleData);
@@ -246,6 +260,10 @@ public class ScenarioResult implements Comparable<ScenarioResult> {
         map.put("refId", scenario.getRefId());
         map.put("sectionIndex", scenario.getSection().getIndex());
         map.put("exampleIndex", scenario.getExampleIndex());
+        int eti = scenario.getExampleTableIndex();
+        if (eti != -1) {
+            map.put("exampleTableIndex", eti);
+        }
         map.put("name", scenario.getName());
         map.put("description", scenario.getDescription());
         map.put("line", scenario.getLine());

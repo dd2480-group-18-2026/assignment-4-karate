@@ -39,12 +39,21 @@ public class Scenario {
     private final int exampleIndex;
 
     private int line;
+    private int exampleTableIndex = -1;
     private List<Tag> tags;
     private String name;
     private String description;
     private List<Step> steps;
     private Map<String, Object> exampleData;
     private String dynamicExpression;
+
+    public int getExampleTableIndex() {
+        return exampleTableIndex;
+    }
+
+    public void setExampleTableIndex(int exampleTableIndex) {
+        this.exampleTableIndex = exampleTableIndex;
+    }
 
     public Scenario(Feature feature, FeatureSection section, int exampleIndex) {
         this.feature = feature;
@@ -53,7 +62,9 @@ public class Scenario {
     }
 
     public boolean isEqualTo(Scenario other) {
-        return other.section.getIndex() == section.getIndex() && other.exampleIndex == exampleIndex;
+        return other.section.getIndex() == section.getIndex() 
+        && other.exampleTableIndex == exampleTableIndex 
+        && other.exampleIndex == exampleIndex;
     }
 
     public String getNameAndDescription() {
@@ -87,6 +98,7 @@ public class Scenario {
         s.line = line;
         s.dynamicExpression = dynamicExpression;
         s.steps = new ArrayList(steps.size());
+        s.exampleTableIndex = exampleTableIndex;
         for (Step step : steps) {
             Step temp = new Step(s, step.getIndex());
             s.steps.add(temp);
