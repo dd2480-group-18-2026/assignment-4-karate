@@ -48,9 +48,15 @@ Summary in one or two sentences
 
 Scope (functionality and code affected).
 
-## Requirements for the new feature or requirements affected by functionality being refactored
+## Requirements for the new feature
 
-Optional (point 3): trace tests to requirements.
+### 1. Report scenario outline example results once
+
+When executing a feature containing a scenario outline with multiple example tables, each example is reported as a scenario in the report. When retrying a subset of these scenarios (the reason for doing this might be that they have failed), the successful scenarios should remain in the report and the failed ones should be updated with the new results. In other words, each example in the scenario outline should be shown exactly once in the report, with the latest result.
+
+### 2. Persist example tags
+
+When executing a feature containing a scenario outline with at least one example, any potential tags on the example table are shown in the report. When rerunning any example within that feature, the example table tags should persist in the report.
 
 ## Code changes
 
