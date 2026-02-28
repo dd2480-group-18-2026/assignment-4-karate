@@ -158,12 +158,13 @@ public class ScenarioResult implements Comparable<ScenarioResult> {
     public static ScenarioResult fromKarateJson(File workingDir, Feature feature, Map<String, Object> map) {
         int sectionIndex = (Integer) map.get("sectionIndex");
         int exampleIndex = (Integer) map.get("exampleIndex");
-        FeatureSection section = feature.getSection(sectionIndex);
-        Scenario scenario = new Scenario(feature, section, exampleIndex);
         Object eti = map.get("exampleTableIndex");
+        int exampleTableIndex = -1;
         if (eti instanceof Number) {
-            scenario.setExampleTableIndex(((Number) eti).intValue());
+            exampleTableIndex = ((Number) eti).intValue();
         }
+        FeatureSection section = feature.getSection(sectionIndex);
+        Scenario scenario = new Scenario(feature, section, exampleIndex, exampleTableIndex);
         if (section.isOutline()) {
             scenario.setTags(section.getScenarioOutline().getTags());
             scenario.setDescription(section.getScenarioOutline().getDescription());
