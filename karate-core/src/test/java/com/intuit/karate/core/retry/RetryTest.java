@@ -76,7 +76,7 @@ class RetryTest {
 
 	@Test
 	void testTags() {
-        Results results = Runner.path("classpath:com/intuit/karate/core/retry/retry-multiple-examples-tables.feature")
+        Results results = Runner.path("classpath:com/intuit/karate/core/retry/test-multiple-examples-tables.feature")
 		.parallel(1);
 		List<String> tagTexts = new ArrayList<String>();
 
