@@ -48,8 +48,8 @@ public class ScenarioOutline {
         this.section = section;
     }
     
-    public Scenario toScenario(String dynamicExpression, int exampleIndex, int exampleTableIndex, int updateLine, List<Tag> tagsForExamples) {
-        Scenario s = new Scenario(feature, section, exampleIndex, exampleTableIndex);
+    public Scenario toScenario(String dynamicExpression, int exampleRowIndex, int exampleTableIndex, int updateLine, List<Tag> tagsForExamples) {
+        Scenario s = new Scenario(feature, section, exampleRowIndex, exampleTableIndex);
         s.setName(name);
         s.setDescription(description);
         s.setLine(updateLine);
@@ -110,9 +110,9 @@ public class ScenarioOutline {
                 } else {
                     int rowCount = table.getRows().size();
                     for (int i = 1; i < rowCount; i++) { // don't include header row
-                        int exampleIndex = i - 1; // next line will set exampleIndex on scenario
-                        Scenario scenario = toScenario(null, exampleIndex, tableIndex, table.getLineNumberForRow(i), examples.getTags());
-                        scenario.setExampleData(table.getExampleData(exampleIndex)); // and we set exampleData here
+                        int exampleRowIndex = i - 1; // next line will set exampleRowIndex on scenario
+                        Scenario scenario = toScenario(null, exampleRowIndex, tableIndex, table.getLineNumberForRow(i), examples.getTags());
+                        scenario.setExampleData(table.getExampleData(exampleRowIndex)); // and we set exampleData here
                         list.add(scenario);
                         for (String key : table.getKeys()) {
                             scenario.replace("<" + key + ">", table.getValueAsString(key, i));

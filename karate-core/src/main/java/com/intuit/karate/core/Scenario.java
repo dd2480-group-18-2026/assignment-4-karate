@@ -36,7 +36,7 @@ public class Scenario {
 
     private final Feature feature;
     private final FeatureSection section;
-    private final int exampleIndex;
+    private final int exampleRowIndex;
 
     private int line;
     private int exampleTableIndex = -1;
@@ -55,21 +55,21 @@ public class Scenario {
         this.exampleTableIndex = exampleTableIndex;
     }
 
-    public Scenario(Feature feature, FeatureSection section, int exampleIndex) {
-        this(feature, section, exampleIndex, -1);
+    public Scenario(Feature feature, FeatureSection section, int exampleRowIndex) {
+        this(feature, section, exampleRowIndex, -1);
     }
 
-    public Scenario(Feature feature, FeatureSection section, int exampleIndex, int exampleTableIndex) {
+    public Scenario(Feature feature, FeatureSection section, int exampleRowIndex, int exampleTableIndex) {
         this.feature = feature;
         this.section = section;
-        this.exampleIndex = exampleIndex;
+        this.exampleRowIndex = exampleRowIndex;
         this.exampleTableIndex = exampleTableIndex;
     }
 
     public boolean isEqualTo(Scenario other) {
         return other.section.getIndex() == section.getIndex() 
         && other.exampleTableIndex == exampleTableIndex 
-        && other.exampleIndex == exampleIndex;
+        && other.exampleRowIndex == exampleRowIndex;
     }
 
     public String getNameAndDescription() {
@@ -95,8 +95,8 @@ public class Scenario {
     }
 
     // only called for dynamic scenarios
-    public Scenario copy(int exampleIndex) {
-        Scenario s = new Scenario(feature, section, exampleIndex, exampleTableIndex);
+    public Scenario copy(int exampleRowIndex) {
+        Scenario s = new Scenario(feature, section, exampleRowIndex, exampleTableIndex);
         s.name = name;
         s.description = description;
         s.tags = tags;
@@ -150,8 +150,8 @@ public class Scenario {
     public String getRefId() {
         int num = section.getIndex() + 1;
         String meta = "[" + num;
-        if (exampleIndex != -1) {
-            meta = meta + "." + (exampleIndex + 1);
+        if (exampleRowIndex != -1) {
+            meta = meta + "." + (exampleRowIndex + 1);
         }
         return meta + ":" + line + "]";
     }
@@ -162,7 +162,15 @@ public class Scenario {
 
     public String getUniqueId() {
         String id = feature.getResource().getPackageQualifiedName() + "_" + (section.getIndex() + 1);
-        return exampleIndex == -1 ? id : id + "_" + (exampleIndex + 1);
+        
+        if (exampleTableIndex != -1) {
+            id = id + "_" + (exampleTableIndex + 1);
+        }
+        if (exampleRowIndex != -1) {
+            id = id + "_" + (exampleRowIndex + 1);
+        }
+        
+        return exampleRowIndex == -1 ? id : id + "_" + (exampleRowIndex + 1);
     }
 
     public List<Step> getBackgroundSteps() {
@@ -238,7 +246,7 @@ public class Scenario {
     }
 
     public boolean isOutlineExample() {
-        return exampleIndex != -1;
+        return exampleRowIndex != -1;
     }
 
     public boolean isDynamic() {
@@ -262,7 +270,7 @@ public class Scenario {
     }
 
     public int getExampleIndex() {
-        return exampleIndex;
+        return exampleRowIndex;
     }
 
     @Override
