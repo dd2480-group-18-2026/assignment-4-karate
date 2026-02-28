@@ -6,6 +6,7 @@ import com.intuit.karate.core.Scenario;
 import com.intuit.karate.core.ScenarioResult;
 import com.intuit.karate.core.Step;
 import java.util.List;
+import java.util.ArrayList;
 import java.util.stream.Collectors;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
@@ -53,5 +54,21 @@ class RetryTest {
 
         assertEquals(0, results.getFailCount(), results.getErrorMessages());
     }
-    
+
+	@Test
+	void testMultipleExampleTables() {
+		Results results = Runner.path("classpath:com/intuit/karate/core/retry/test-multiple-examples-tables.feature")
+                .parallel(1);
+		List<String> StepTexts = new ArrayList<String>();
+
+		for (ScenarioResult scenarioResult : results.getScenarioResults().collect(Collectors.toList())) {
+			ScenarioResult retryScenarioResult = results.getSuite().retryScenario(scenarioResult.getScenario());
+			results.getSuite().updateResults(retryScenarioResult);
+		}
+		for (ScenarioResult scenarioResult : results.getScenarioResults().collect(Collectors.toList())) {
+			StepTexts.add(scenarioResult.getScenario().getSteps().get(0).getText());
+		}
+		assertEquals("print \"example 1\"", StepTexts.get(0));
+		assertEquals("print \"example 2\"", StepTexts.get(1));
+	}
 }
