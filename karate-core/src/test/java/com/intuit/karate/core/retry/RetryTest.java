@@ -5,6 +5,8 @@ import com.intuit.karate.Runner;
 import com.intuit.karate.core.Scenario;
 import com.intuit.karate.core.ScenarioResult;
 import com.intuit.karate.core.Step;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
@@ -59,16 +61,34 @@ class RetryTest {
 	void testMultipleExamplesTables() {
 		Results results = Runner.path("classpath:com/intuit/karate/core/retry/test-multiple-examples-tables.feature")
                 .parallel(1);
-		List<String> StepTexts = new ArrayList<String>();
+		List<String> stepText = new ArrayList<String>();
 
 		for (ScenarioResult scenarioResult : results.getScenarioResults().collect(Collectors.toList())) {
 			ScenarioResult retryScenarioResult = results.getSuite().retryScenario(scenarioResult.getScenario());
 			results.getSuite().updateResults(retryScenarioResult);
 		}
 		for (ScenarioResult scenarioResult : results.getScenarioResults().collect(Collectors.toList())) {
-			StepTexts.add(scenarioResult.getScenario().getSteps().get(0).getText());
+			stepText.add(scenarioResult.getScenario().getSteps().get(0).getText());
 		}
-		assertEquals("print \"example 1\"", StepTexts.get(0));
-		assertEquals("print \"example 2\"", StepTexts.get(1));
+		assertEquals("print \"example 1\"", stepText.get(0));
+		assertEquals("print \"example 2\"", stepText.get(1));
+	}
+
+	@Test
+	void testTags() {
+        Results results = Runner.path("classpath:com/intuit/karate/core/retry/retry-multiple-examples-tables.feature")
+		.parallel(1);
+		List<String> tagTexts = new ArrayList<String>();
+
+		for (ScenarioResult scenarioResult : results.getScenarioResults().collect(Collectors.toList())) {
+            ScenarioResult retryScenarioResult = results.getSuite().retryScenario(scenarioResult.getScenario());
+            results = results.getSuite().updateResults(retryScenarioResult);
+        }
+		for (ScenarioResult scenarioResult : results.getScenarioResults().collect(Collectors.toList())) {
+			assertNotNull(scenarioResult.getScenario().getTags());
+			tagTexts.add(scenarioResult.getScenario().getTags().get(0).getText());
+		}
+		assertEquals("tag1", tagTexts.get(0));
+		assertEquals("tag2", tagTexts.get(1));
 	}
 }
