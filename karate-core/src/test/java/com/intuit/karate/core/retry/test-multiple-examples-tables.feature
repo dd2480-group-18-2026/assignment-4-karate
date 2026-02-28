@@ -11,4 +11,3 @@ Examples:
 Examples: 
 | Example |
 |  2      |
-
