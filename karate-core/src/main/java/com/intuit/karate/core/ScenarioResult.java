@@ -32,6 +32,9 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import java.util.Collections;
 
 /**
  *
@@ -58,6 +61,12 @@ public class ScenarioResult implements Comparable<ScenarioResult> {
         if (delta != 0) {
             return delta;
         }
+
+        int t = scenario.getExampleTableIndex() - sr.scenario.getExampleTableIndex();
+        if (t != 0) {
+            return t;
+        }
+
         return scenario.getExampleIndex() - sr.scenario.getExampleIndex();
     }
 
@@ -152,10 +161,21 @@ public class ScenarioResult implements Comparable<ScenarioResult> {
     public static ScenarioResult fromKarateJson(File workingDir, Feature feature, Map<String, Object> map) {
         int sectionIndex = (Integer) map.get("sectionIndex");
         int exampleIndex = (Integer) map.get("exampleIndex");
+        Object eti = map.get("exampleTableIndex");
+        int exampleTableIndex = -1;
+        if (eti instanceof Number) {
+            exampleTableIndex = ((Number) eti).intValue();
+        }
         FeatureSection section = feature.getSection(sectionIndex);
-        Scenario scenario = new Scenario(feature, section, exampleIndex);
+        Scenario scenario = new Scenario(feature, section, exampleIndex, exampleTableIndex);
         if (section.isOutline()) {
-            scenario.setTags(section.getScenarioOutline().getTags());
+            List<ExamplesTable> tables = section.getScenarioOutline().getExamplesTables(); // This can never be null, since an outline is used in conjunction with example tables
+            List<Tag> tags = tables.get(exampleTableIndex).getTags();// This is initialized as an empty arrayList and never set to null in the codebase
+            List<Tag> outlineTags = section.getScenarioOutline().getTags(); // This however can be set to null
+            if (outlineTags != null) {
+                tags.addAll(outlineTags);
+            }
+            scenario.setTags(tags);
             scenario.setDescription(section.getScenarioOutline().getDescription());
         } else {
             scenario.setTags(section.getScenario().getTags());
@@ -216,6 +236,10 @@ public class ScenarioResult implements Comparable<ScenarioResult> {
         //======================================================================
         map.put("sectionIndex", scenario.getSection().getIndex());
         map.put("exampleIndex", scenario.getExampleIndex());
+        int eti = scenario.getExampleTableIndex();
+        if (eti != -1) {
+            map.put("exampleTableIndex", eti);
+        }
         Map<String, Object> exampleData = scenario.getExampleData();
         if (exampleData != null) {
             map.put("exampleData", exampleData);
@@ -246,6 +270,10 @@ public class ScenarioResult implements Comparable<ScenarioResult> {
         map.put("refId", scenario.getRefId());
         map.put("sectionIndex", scenario.getSection().getIndex());
         map.put("exampleIndex", scenario.getExampleIndex());
+        int eti = scenario.getExampleTableIndex();
+        if (eti != -1) {
+            map.put("exampleTableIndex", eti);
+        }
         map.put("name", scenario.getName());
         map.put("description", scenario.getDescription());
         map.put("line", scenario.getLine());

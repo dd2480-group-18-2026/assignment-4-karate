@@ -151,17 +151,17 @@ public class Feature {
         return sections.get(sectionIndex);
     }
 
-    public Scenario getScenario(int sectionIndex, int exampleIndex) {
+    public Scenario getScenario(int sectionIndex, int exampleRowIndex) {
         FeatureSection section = getSection(sectionIndex);
-        if (exampleIndex == -1) {
+        if (exampleRowIndex == -1) {
             return section.getScenario();
         }
         ScenarioOutline outline = section.getScenarioOutline();
-        return outline.getScenarios().get(exampleIndex);
+        return outline.getScenarios().get(exampleRowIndex);
     }
 
-    public Step getStep(int sectionIndex, int exampleIndex, int stepIndex) {
-        Scenario scenario = getScenario(sectionIndex, exampleIndex);
+    public Step getStep(int sectionIndex, int exampleRowIndex, int stepIndex) {
+        Scenario scenario = getScenario(sectionIndex, exampleRowIndex);
         List<Step> steps = scenario.getSteps();
         if (stepIndex == -1 || steps.isEmpty() || steps.size() <= stepIndex) {
             return null;
