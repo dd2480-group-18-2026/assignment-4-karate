@@ -23,6 +23,7 @@ skinparam 300 dpi
 +class ScenarioOutline {
 	-List<ExamplesTable> examplesTables
 
+	+Scenario toScenario(String dynamicExpression, int exampleIndex, int updateLine, List<Tag> tagsForExamples)
 	+List<Scenario> getScenarios(FeatureRuntime fr)
 }
 +class Scenario {
@@ -50,6 +51,7 @@ note top of FeatureSection : has either a Scenario or a ScenarioOutline
 
 Feature o-- FeatureSection : "has multiple"
 Feature <--> FeatureParser : "uses"
+Feature <--> Scenario : "uses"
 FeatureSection o.. Scenario : "may have a"
 FeatureSection o.. ScenarioOutline : "may have a"
 Suite --> ScenarioResult : "uses"
