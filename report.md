@@ -75,9 +75,7 @@ The changes can be seen by using the git diff command. The command below automat
 git diff master issue-15-code-changes -- . ':(exclude)report.md' ':(exclude)assignment/'
 ```
 
-Optional (point 4): the patch is clean.
-
-Optional (point 5): considered for acceptance (passes all automated checks).
+Optional (point 4): the patch is clean. Indeed, one can check that the patch is clean by adding the `--check` option to the command above (before the `--`) to have git compute the empty lines of the patch.
 
 ## Test results
 
