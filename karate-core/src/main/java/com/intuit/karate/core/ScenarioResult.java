@@ -61,12 +61,10 @@ public class ScenarioResult implements Comparable<ScenarioResult> {
         if (delta != 0) {
             return delta;
         }
-
         int t = scenario.getExampleTableIndex() - sr.scenario.getExampleTableIndex();
         if (t != 0) {
             return t;
         }
-
         return scenario.getExampleIndex() - sr.scenario.getExampleIndex();
     }
 
