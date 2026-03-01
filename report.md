@@ -71,11 +71,15 @@ refactoring).
 
 ## UML class diagram and its description
 
-### Key changes/classes affected
+![UML class diagram for affected classes and some additional ones for context](assignment/uml/diagram_before.png)
 
-Optional (point 1): Architectural overview.
+The UML diagram shows the structure of the classes that were involved in fixing the issue. For context, some classes
+not affected or affected very little are also shown, to illustrate how the core classes involved are created and interact. 
 
-Optional (point 2): relation to design pattern(s).
+The most important part is that ScenarioOutline contains one or more ExamplesTable, which it uses to generate Scenarios. Scenario was the class most affected by the changes, as we needed to integrate a new variable, exampleTableIndex, renaming the original exampleIndex to exampleRowIndex. This change required adjustments to many other methods, such as initially setting it in ScenarioOutline, or adjusting ScenarioResult methods for comparing and creating from json. The Suite class is included as its retryScenario and updateResults methods were the cause of the issue, but it did not have to be changed, as we fixed the methods it relied on. After we fixed the first requirement, the tags issue only required changes in ScenarioResult:fromKarateJson. 
+
+The diagram shows the structure before the changes, but the only differences that would be noticeable afterwards is that
+"getExampleTableIndex" and "setExampleTableIndex" would be present in the Scenario class. Most changes are internally in the methods and would not affect the structure of the diagram, but some methods like toScenario would have exampleTableIndex as a new parameter. 
 
 ## Overall experience
 
