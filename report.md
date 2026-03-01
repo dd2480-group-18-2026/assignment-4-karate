@@ -80,8 +80,9 @@ Optional (point 5): considered for acceptance (passes all automated checks).
 
 ## Test results
 
-Overall results with link to a copy or excerpt of the logs (before/after
-refactoring).
+The current version of Karate fails both of our new tests, resulting in two failures out of 612 test ([logs](assignment/logs/before.txt)).
+
+Our new patch addresses these issues, and the code now passes all the tests in the test suite ([logs](assignment/logs/after.txt)).
 
 ## UML class diagram and its description
 
