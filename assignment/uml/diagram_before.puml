@@ -38,11 +38,11 @@ skinparam 300 dpi
 	-List<Tag> tags
 }
 +class ScenarioResult {
-	-Scenaro scenario
+	-Scenario scenario
 
 	+ScenarioResult fromKarateJson(File workingDir, Feature feature, Map<String, Object> map)
 	+Map<String, Object> toKarateJson()
-	+List<Map> getStepResults(boolean background)
+	-List<Map> getStepResults(boolean background)
 	+int compareTo(ScenarioResult sr)
 }
 
