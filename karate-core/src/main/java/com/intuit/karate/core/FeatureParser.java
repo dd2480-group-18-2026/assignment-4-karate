@@ -240,7 +240,7 @@ public class FeatureParser extends KarateParserBaseListener {
     @Override
     public void enterScenario(KarateParser.ScenarioContext ctx) {
         FeatureSection section = new FeatureSection();
-        Scenario scenario = new Scenario(feature, section, -1);
+        Scenario scenario = new Scenario(feature, section, -1, -1);
         scenario.setLine(getActualLine(ctx.SCENARIO()));
         section.setScenario(scenario);
         feature.addSection(section);

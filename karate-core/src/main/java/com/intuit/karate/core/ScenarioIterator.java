@@ -144,7 +144,7 @@ public class ScenarioIterator implements Spliterator<ScenarioRuntime> {
                 rowValue = new Variable(list.get(rowIndex));
             }
             if (rowValue.isMap()) {
-                Scenario dynamic = currentScenario.copy(rowIndex); // this will set exampleIndex
+                Scenario dynamic = currentScenario.copy(rowIndex); // this will set exampleRowIndex
                 Map<String, Object> map = rowValue.getValue();
                 dynamic.setExampleData(map); // and here we set exampleData
                 map.forEach((k, v) -> {

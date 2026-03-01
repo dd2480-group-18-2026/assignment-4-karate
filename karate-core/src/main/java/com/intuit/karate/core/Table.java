@@ -212,8 +212,8 @@ public class Table {
         }
     }
 
-    public Map<String, Object> getExampleData(int exampleIndex) {
-        List<String> row = rows.get(exampleIndex + 1);
+    public Map<String, Object> getExampleData(int exampleRowIndex) {
+        List<String> row = rows.get(exampleRowIndex + 1);
         Map<String, Object> map = new LinkedHashMap(cols.size());
         for (Column col : cols) {
             String raw = row.get(col.index);
