@@ -58,7 +58,7 @@ class RetryTest {
     }
 
 	@Test
-	void testMultipleExamplesTables() {
+	void testMultipleExampleTablesTitles() {
 		Results results = Runner.path("classpath:com/intuit/karate/core/retry/test-multiple-examples-tables.feature")
                 .parallel(1);
 		List<String> stepText = new ArrayList<String>();
@@ -75,7 +75,7 @@ class RetryTest {
 	}
 
 	@Test
-	void testTags() {
+	void testMultipleExampleTablesTags() {
         Results results = Runner.path("classpath:com/intuit/karate/core/retry/test-multiple-examples-tables.feature")
 		.parallel(1);
 		List<String> tagTexts = new ArrayList<String>();
