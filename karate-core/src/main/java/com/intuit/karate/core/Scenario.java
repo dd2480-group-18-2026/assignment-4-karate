@@ -170,7 +170,11 @@ public class Scenario {
             id = id + "_" + (exampleRowIndex + 1);
         }
         
+<<<<<<< HEAD
         return exampleRowIndex == -1 ? id : id + "_" + (exampleRowIndex + 1);
+=======
+        return id;
+>>>>>>> issue-15-code-changes
     }
 
     public List<Step> getBackgroundSteps() {

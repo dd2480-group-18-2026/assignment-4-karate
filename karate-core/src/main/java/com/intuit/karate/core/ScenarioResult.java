@@ -169,6 +169,7 @@ public class ScenarioResult implements Comparable<ScenarioResult> {
         FeatureSection section = feature.getSection(sectionIndex);
         Scenario scenario = new Scenario(feature, section, exampleIndex, exampleTableIndex);
         if (section.isOutline()) {
+<<<<<<< HEAD
             // This can never be null, since an outline is used in conjunction with example tables
             List<ExamplesTable> tables = section.getScenarioOutline().getExamplesTables(); 
             
@@ -181,6 +182,14 @@ public class ScenarioResult implements Comparable<ScenarioResult> {
                 tags.addAll(outlineTags);
             }
 
+=======
+            List<ExamplesTable> tables = section.getScenarioOutline().getExamplesTables(); // This can never be null, since an outline is used in conjunction with example tables
+            List<Tag> tags = tables.get(exampleTableIndex).getTags();// This is initialized as an empty arrayList and never set to null in the codebase
+            List<Tag> outlineTags = section.getScenarioOutline().getTags(); // This however can be set to null
+            if (outlineTags != null) {
+                tags.addAll(outlineTags);
+            }
+>>>>>>> issue-15-code-changes
             scenario.setTags(tags);
             scenario.setDescription(section.getScenarioOutline().getDescription());
         } else {
