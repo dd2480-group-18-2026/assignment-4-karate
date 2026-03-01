@@ -70,9 +70,10 @@ To test this requirement [testMultipleExampleTablesTags()](https://github.com/dd
 
 ### Patch
 
-(copy your changes or the add git command to show them)
-
-git diff ...
+The changes can be seen by using the git diff command. The command below automatically excludes every file regarding the report:
+```bash
+git diff master issue-15-code-changes -- . ':(exclude)report.md' ':(exclude)assignment/'
+```
 
 Optional (point 4): the patch is clean.
 
