@@ -49,12 +49,14 @@ skinparam 300 dpi
 note top of FeatureSection : has either a Scenario or a ScenarioOutline
 
 Feature o-- FeatureSection : "has multiple"
+Feature <--> FeatureParser : "uses"
 FeatureSection o.. Scenario : "may have a"
 FeatureSection o.. ScenarioOutline : "may have a"
 Suite --> ScenarioResult : "uses"
 Suite --> Scenario : "uses"
 FeatureParser --> ScenarioOutline : "creates"
 FeatureParser --> ExamplesTable : "creates"
+FeatureParser --> FeatureSection : "creates"
 ScenarioOutline --> Scenario : "creates"
 ScenarioOutline o-- ExamplesTable : "has multiple"
 ScenarioResult o-- Scenario : "has a"
