@@ -1,8 +1,21 @@
-@startuml exampletablediagram
+@startuml diagram_before
 skinparam 300 dpi
 +class Suite {
 	+ScenarioResult retryScenario(Scenario scenario)
 	+Results updateResults(ScenarioResult sr)
+}
++class Feature {
+	-List<FeatureSection> sections
+}
++class FeatureSection {
+	-Scenario scenario
+	-ScenarioOutline scenarioOutline
+
+	+boolean isOutline()
+	+Scenario getScenario()
+	+void setScenario(Scenario scenario)
+	+ScenarioOutline getScenarioOutline()
+	+void setScenarioOutline(ScenarioOutline scenarioOutline)
 }
 +class FeatureParser {
 	+enterScenarioOutline(KarateParser.ScenarioOutlineContext ctx)
@@ -16,7 +29,9 @@ skinparam 300 dpi
 	-int exampleIndex
 	-List<Tag> tags
 	-Map<String, Object> exampleData;
+
 	+boolean isEqualTo(Scenario other)
+	+String getUniqueId() 
 }
 +class ExamplesTable {
 	-ScenarioOutline outline
@@ -24,11 +39,18 @@ skinparam 300 dpi
 }
 +class ScenarioResult {
 	-Scenaro scenario
+
 	+ScenarioResult fromKarateJson(File workingDir, Feature feature, Map<String, Object> map)
 	+Map<String, Object> toKarateJson()
+	+List<Map> getStepResults(boolean background)
 	+int compareTo(ScenarioResult sr)
 }
 
+note top of FeatureSection : has either a Scenario or a ScenarioOutline
+
+Feature o-- FeatureSection : "has multiple"
+FeatureSection o.. Scenario : "may have a"
+FeatureSection o.. ScenarioOutline : "may have a"
 Suite --> ScenarioResult : "uses"
 Suite --> Scenario : "uses"
 FeatureParser --> ScenarioOutline : "creates"
