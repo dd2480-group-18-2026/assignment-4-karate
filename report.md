@@ -97,7 +97,7 @@ Optional (point 2): relation to design pattern(s).
 
 The realization that definitely was cemented was how difficult it can be understand the underlying problem causing an issue. The issue we chose actually came with quite a thorough description and an initial discussion between the reporter and the core maintainer. Despite this, we still had to spend many hours investigating the code to feel sure we actually understood what was wrong. Another lesson we take from this assignment is how much work is done besides coding when resolving an issue, even for those that are quite small.
 
-### SEMAT
+### Essence
 
 For this lab we consider ourselves to be still be at the **In Place** stage in terms of way-of-working. This is because there are still quite a few deviations from agreed upon standards. However, in terms of the team alpha we are at the **Performing** stage as we are continuously finish the work on time and rarely have to backtrack. As this is the last assignment, our team will reach the **Adjourned** stage after it is handed in. To reach the next stage of way-of-working, we would have needed to get more practice with the established methods to make them come more naturally.
 
