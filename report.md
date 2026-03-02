@@ -26,7 +26,7 @@ We used the same project as for assignment 3. Below is the onboarding experience
 
    d. Did the build conclude automatically without errors?
 
-      Building was succefull but there were scenario/assertion failures during Gatling simulations but these were intentional in the demo feature files.
+      Building was successful but there were scenario/assertion failures during Gatling simulations but these were intentional in the demo feature files.
 
    e. How well do examples and tests run on your system(s)?
 
