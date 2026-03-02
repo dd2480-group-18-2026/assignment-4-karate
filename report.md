@@ -54,7 +54,7 @@ In order to fix the duplication and disappearing tests, the `Scenario` class nee
 
 In order to resolve the issue, the new variable had to be set to a correct value when creating Scenario instances in the ScenarioOutline class. Furthermore, the Scenario method "isEqualTo" had to be updated to use the new variable, as otherwise different scenarios could erroneously be considered equal. The "compareTo" method in ScenarioResult also had to be updated, as well as methods to parse ScenarioResults to and from json.  
 
-To resolve the tags part of the issue, the first part of the issue first had to be resolved. With this fix in place, what remained was modifying fromKarateJson in ScenarioResult to set tags from both ScenarioOutline and the examplesTable corresponding to the Scenario. Previously this method ignored ExamplesTable tags, so parsing a ScenarioResult from json always removed them, causing the issue. This required usage of exampleTableIndex to index the correct ExamplesTable, which is why the first part had to be done before fixing this. 
+To resolve the tags part of the issue, the first part of the issue first had to be resolved. With this fix in place, what remained was modifying `fromKarateJson` in `ScenarioResult` to set tags from both ScenarioOutline and the examplesTable corresponding to the `Scenario`. Previously this method ignored `ExamplesTable` tags, so parsing a ScenarioResult from JSON always removed them, causing the issue. This required usage of `exampleTableIndex` to index the correct `ExamplesTable`, which is why the first part had to be done before fixing this. 
 
 ## Requirements for the new feature
 
