@@ -26,11 +26,11 @@ We used the same project as for assignment 3. Below is the onboarding experience
 
    d. Did the build conclude automatically without errors?
 
-      Building was successful but there were scenario/assertion failures during Gatling simulations but these were intentional in the demo feature files.
+      Building was successful
 
    e. How well do examples and tests run on your system(s)?
 
-      JUnit tests passed 6/6 but Gatling example simulations produced KO requests, but these were intentional after looking through the tests and coumentation. Gatlin also generated HTML performance reports
+      Core tests all pass 610/610
 
 Worth noting is that the issue also came with a tiny project used for reproducing the bug. This was very easy to set up and built successfully more or less directly.
 
