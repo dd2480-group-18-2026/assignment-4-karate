@@ -5,7 +5,6 @@ import com.intuit.karate.Runner;
 import com.intuit.karate.core.Scenario;
 import com.intuit.karate.core.ScenarioResult;
 import com.intuit.karate.core.Step;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ArrayList;
@@ -20,7 +19,6 @@ import org.slf4j.LoggerFactory;
  * @author pthomas3
  */
 class RetryTest {
-    
     static final Logger logger = LoggerFactory.getLogger(RetryTest.class);   
 
     @Test

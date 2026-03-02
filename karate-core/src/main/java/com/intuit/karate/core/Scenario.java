@@ -67,8 +67,8 @@ public class Scenario {
     }
 
     public boolean isEqualTo(Scenario other) {
-        return other.section.getIndex() == section.getIndex() 
-        && other.exampleTableIndex == exampleTableIndex 
+        return other.section.getIndex() == section.getIndex()
+        && other.exampleTableIndex == exampleTableIndex
         && other.exampleRowIndex == exampleRowIndex;
     }
 
@@ -162,14 +162,12 @@ public class Scenario {
 
     public String getUniqueId() {
         String id = feature.getResource().getPackageQualifiedName() + "_" + (section.getIndex() + 1);
-        
         if (exampleTableIndex != -1) {
             id = id + "_" + (exampleTableIndex + 1);
         }
         if (exampleRowIndex != -1) {
             id = id + "_" + (exampleRowIndex + 1);
         }
-        
         return id;
     }
 
