@@ -79,7 +79,7 @@ not affected or affected very little are also shown, to illustrate how the core 
 The most important part is that ScenarioOutline contains one or more `ExamplesTable`, which it uses to generate Scenarios. `Scenario` was the class most affected by the changes, as we needed to add a new field, `exampleTableIndex`, renaming the original `exampleIndex` to `exampleRowIndex`. This change required adjustments to many other methods, such as initially setting it in `ScenarioOutline`, or adjusting `ScenarioResult` methods for comparing and creating from JSON. The Suite class is included as its `retryScenario` and `updateResults` methods were the cause of the issue, but it did not have to be changed, as we fixed the methods it relied on. After we fixed the first requirement, the tags issue only required changes in `ScenarioResult:fromKarateJson`. 
 
 The diagram shows the structure before the changes, but the only differences that would be noticeable afterwards is that
-"getExampleTableIndex" and "setExampleTableIndex" would be present in the Scenario class. Most changes are internally in the methods and would not affect the structure of the diagram, but some methods like toScenario would have exampleTableIndex as a new parameter. 
+`getExampleTableIndex` and `setExampleTableIndex` would be present in the `Scenario` class. Most changes are internally in the methods and would not affect the structure of the diagram, but some methods like `toScenario` would have `exampleTableIndex` as a new parameter. 
 
 ## Overall experience
 
