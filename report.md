@@ -36,27 +36,120 @@ Worth noting is that the issue also came with a tiny project used for reproducin
 
 ## Effort spent
 
-For each team member, how much time was spent in
+**August: 23h**
+1. plenary discussions/meetings: 3h
+    - Meetings with group: 3h
 
-1. plenary discussions/meetings;
+2. discussions within parts of the group: 2h
+    - PR reviews: 1h
+    - Discord discussions: 1h
 
-2. discussions within parts of the group;
+3. reading documentation: 4h
+    - Browse issues in the repo: 1h
+    - Looking through karate documentation: 3h
 
-3. reading documentation;
+4. configuration and setup: 5h
+    - Setting up local version of karate and template: 1h
+    - Making bug reproduction repo use local karate version (issues with maven): 4h
 
-4. configuration and setup;
+5. analyzing code/output: 5h
+    - Investigating code output and report: 5h
 
-5. analyzing code/output;
+6. writing documentation: 0h
 
-6. writing documentation;
+7. writing code: 3h
+    - Writing code: 3h
 
-7. writing code;
+8. running code: 1h
+    - Debugging: 1h
 
-8. running code?
+**Eliott: 17h**
+1. plenary discussions/meetings: 3h
+    - Meetings with group: 3h
 
-For setting up tools and libraries (step 4), enumerate all dependencies
-you took care of and where you spent your time, if that time exceeds
-30 minutes.
+2. discussions within parts of the group: 2.5h
+    - PR reviews: 0.5h
+    - Discord discussion: 2h
+
+3. reading documentation: 2h
+    - Browse issues in the repo: 2h
+
+4. configuration and setup: 1h
+    - Setting up local version of karate and template: 1h
+
+5. analyzing code/output: 3h
+    - Investigating tags issue: 3h
+
+6. Writing documentation: 0.5h
+    - Writing code diff and logs comparison: 0.5h
+
+7. writing code: 4h
+    - Writing code and cleaning things up: 4h
+
+8. running code: 1h
+    - Debugging: 1h
+
+**Felix: 21h**
+1. plenary discussions/meetings: 3h
+    - Meeting to align on assignment understanding and decide on issue: 2h
+    - Meeting to check status and assign remaining work: 1h
+
+2. discussions within parts of the group: 6h
+    - Investigating and discussing how tags are parsed: 3h
+    - Discord discussions: 2h
+    - PR reviews: 1h
+
+3. reading documentation: 2h
+    - Looking through open issues: 2h
+
+4. configuration and setup: 0.5h
+    - Setting up local version of karate to be used in issue reproduction: 0.5h
+
+5. analyzing code/output: 5h 
+    - Investigating issue: 5h
+
+6. writing documentation: 2.5h
+    - Writing requirements: 0.5h
+    - Writing context: 1h
+    - Writing essence 1h
+
+7. writing code: 1h
+    - Writing code to investigate: 1h
+
+8. running code: 1h
+    - Debugging as part of investigation: 1h
+
+**Tim: 20.5h**
+1. plenary discussions/meetings: 4h 
+    - Meetings with group 3h
+
+2. discussions within parts of the group: 3h 
+    - Discord discussions 1h
+    - PR reviews 3h
+
+3. reading documentation:3h 
+    - Reading karate documentation to understand how it works better
+    - Read PlantUML documentation to learn how to write UML
+
+4. configuration and setup: 1h
+    - Set up example repo showcasing issue from issue for new version of karate
+    - Set up karate
+
+5. analyzing code/output: 3h
+    - analyze code to figure out how to write the tests
+    - analyze code to determine what to include in UML and how things are connected
+
+6. writing documentation: 3.5h  
+    - Add issue information
+    - Create UML
+    - Add UML description
+    - Map requirements to tests
+
+7. writing code: 2h
+    - write tests
+
+8. running code: 1h
+    - run tests and check output on different branches
 
 ## Overview of issue(s) and work done.
 
