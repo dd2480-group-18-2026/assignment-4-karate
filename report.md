@@ -125,13 +125,17 @@ The diagram shows the structure before the changes, but the only differences tha
 
 ## Overall experience
 
-What are your main take-aways from this project? What did you learn?
+### Lessons learned
 
-How did you grow as a team, using the Essence standard to evaluate yourself?
+The realization that definitely was cemented was how difficult it can be understand the underlying problem causing an issue. The issue we chose actually came with quite a thorough description and an initial discussion between the reporter and the core maintainer. Despite this, we still had to spend many hours investigating the code to feel sure we actually understood what was wrong. Another lesson we take from this assignment is how much work is done besides coding when resolving an issue, even for those that are quite small.
 
-Optional (point 6): How would you put your work in context with best software engineering practice?
+### Essence
 
-Optional (point 7): Is there something special you want to mention here?
+For this lab we consider ourselves to be still be at the **In Place** stage in terms of way-of-working. This is because there are still quite a few deviations from agreed upon standards. However, in terms of the team alpha we are at the **Performing** stage as we are continuously finish the work on time and rarely have to backtrack. As this is the last assignment, our team will reach the **Adjourned** stage after it is handed in. To reach the next stage of way-of-working, we would have needed to get more practice with the established methods to make them come more naturally.
+
+Another alpha of importance for this assignment is *Stakeholders*. For this assignment we have the person who created the issue, the core maintainer and the TA/examiner. Although their demands are mostly aligned, one could argue that the need for some of the documentation required by the TA/examiner is in conflict with the rest of the task which the two people involved in the issue wish to get done. Additionally, we cannot really evaluate the stakeholders beyond the **Represented** stage as the TA/examiner has not been in contact with the other stakeholders and neither have we. Therefore, we cannot fully check off points such as "The collaboration approach among the stakeholder representatives has been agreed" or "The stakeholder representatives provide feedback and take part in decision making in a timely manner". In hindsight, it might have been a good idea to actually reach out to the core maintainer as he generally does seems quite involved and responsive. This could have given us more guidance in understanding the requirements of the issue.
+
+Some of the additional tasks that are not directly connected to the issue do, however, actually guide us in identifying the requirements and make it easier to show what has been done. An example of this demanding the changes to be put into context. In that way, they contribute to both the *Work* and *Requirements* alphas.
 
 ## Context
 
