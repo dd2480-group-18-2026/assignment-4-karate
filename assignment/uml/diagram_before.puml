@@ -1,0 +1,65 @@
+@startuml diagram_before
+skinparam 300 dpi
++class Suite {
+	+ScenarioResult retryScenario(Scenario scenario)
+	+Results updateResults(ScenarioResult sr)
+}
++class Feature {
+	-List<FeatureSection> sections
+}
++class FeatureSection {
+	-Scenario scenario
+	-ScenarioOutline scenarioOutline
+
+	+boolean isOutline()
+	+Scenario getScenario()
+	+void setScenario(Scenario scenario)
+	+ScenarioOutline getScenarioOutline()
+	+void setScenarioOutline(ScenarioOutline scenarioOutline)
+}
++class FeatureParser {
+	+enterScenarioOutline(KarateParser.ScenarioOutlineContext ctx)
+}
++class ScenarioOutline {
+	-List<ExamplesTable> examplesTables
+
+	+Scenario toScenario(String dynamicExpression, int exampleIndex, int updateLine, List<Tag> tagsForExamples)
+	+List<Scenario> getScenarios(FeatureRuntime fr)
+}
++class Scenario {
+	-int exampleIndex
+	-List<Tag> tags
+	-Map<String, Object> exampleData;
+
+	+boolean isEqualTo(Scenario other)
+	+String getUniqueId() 
+}
++class ExamplesTable {
+	-ScenarioOutline outline
+	-List<Tag> tags
+}
++class ScenarioResult {
+	-Scenario scenario
+
+	+ScenarioResult fromKarateJson(File workingDir, Feature feature, Map<String, Object> map)
+	+Map<String, Object> toKarateJson()
+	-List<Map> getStepResults(boolean background)
+	+int compareTo(ScenarioResult sr)
+}
+
+note top of FeatureSection : has either a Scenario or a ScenarioOutline
+
+Feature o-- FeatureSection : "has one or more"
+Feature <--> FeatureParser : "uses"
+Feature <--> Scenario : "uses"
+FeatureSection o.. Scenario : "may have a"
+FeatureSection o.. ScenarioOutline : "may have a"
+Suite --> ScenarioResult : "uses"
+Suite --> Scenario : "uses"
+FeatureParser --> ScenarioOutline : "creates"
+FeatureParser --> ExamplesTable : "creates"
+FeatureParser --> FeatureSection : "creates"
+ScenarioOutline --> Scenario : "creates"
+ScenarioOutline o-- ExamplesTable : "has one or more"
+ScenarioResult o-- Scenario : "has a"
+@enduml
