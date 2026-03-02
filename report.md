@@ -70,13 +70,12 @@ To test this requirement [testMultipleExampleTablesTags()](https://github.com/dd
 
 ### Patch
 
-(copy your changes or the add git command to show them)
+The changes can be seen by using the git diff command. The command below automatically excludes every file regarding the report:
+```bash
+git diff master issue-15-code-changes -- . ':(exclude)report.md' ':(exclude)assignment/'
+```
 
-git diff ...
-
-Optional (point 4): the patch is clean.
-
-Optional (point 5): considered for acceptance (passes all automated checks).
+Optional (point 4): the patch is clean. Indeed, one can check that the patch is clean by adding the `--check` option to the command above (before the `--`) to have git compute the empty lines of the patch.
 
 ## Test results
 
