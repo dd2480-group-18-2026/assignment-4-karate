@@ -50,7 +50,7 @@ A user observed that when retrying scenarios (karate tests) created from a scena
 
 #### Scope
 
-In order to fix the duplication and disappearing tests, the Scenario class needed to be amended with a new variable ExampleTableIndex, which gives information about which of several examples table a Scenario originates from. Previously only a variable called "ExampleIndex" existed, which only indicated which row within a specific ExamplesTable a Scenario was created from. This variable was also renamed to "ExampleRowIndex". 
+In order to fix the duplication and disappearing tests, the `Scenario` class needed to be amended with a new field `exampleTableIndex`, which gives information about which of several examples table a Scenario originates from. Previously only a field called `exampleIndex` existed, which only indicated which row within a specific `ExamplesTable` a `Scenario` was created from. This variable was also renamed to `exampleRowIndex`. 
 
 In order to resolve the issue, the new variable had to be set to a correct value when creating Scenario instances in the ScenarioOutline class. Furthermore, the Scenario method "isEqualTo" had to be updated to use the new variable, as otherwise different scenarios could erroneously be considered equal. The "compareTo" method in ScenarioResult also had to be updated, as well as methods to parse ScenarioResults to and from json.  
 
