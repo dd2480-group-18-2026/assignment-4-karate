@@ -40,13 +40,21 @@ you took care of and where you spent your time, if that time exceeds
 
 ## Overview of issue(s) and work done.
 
-Title:
+Title: Mismatched Step Titles and Missing Tags in Reports After Retrying Scenarios
 
-URL:
+URL: https://github.com/karatelabs/karate/issues/2489
 
-Summary in one or two sentences
+#### Summary
 
-Scope (functionality and code affected).
+A user observed that when retrying scenarios (karate tests) created from a scenario outline containing multiple examples tables, some of the updated tests were duplicated and some disappeared in the report. Additionally, the tags on examples tables disappeared after retrying. 
+
+#### Scope
+
+In order to fix the duplication and disappearing tests, the Scenario class needed to be amended with a new variable ExampleTableIndex, which gives information about which of several examples table a Scenario originates from. Previously only a variable called "ExampleIndex" existed, which only indicated which row within a specific ExamplesTable a Scenario was created from. This variable was also renamed to "ExampleRowIndex". 
+
+In order to resolve the issue, the new variable had to be set to a correct value when creating Scenario instances in the ScenarioOutline class. Furthermore, the Scenario method "isEqualTo" had to be updated to use the new variable, as otherwise different scenarios could erroneously be considered equal. The "compareTo" method in ScenarioResult also had to be updated, as well as methods to parse ScenarioResults to and from json.  
+
+To resolve the tags part of the issue, the first part of the issue first had to be resolved. With this fix in place, what remained was modifying fromKarateJson in ScenarioResult to set tags from both ScenarioOutline and the examplesTable corresponding to the Scenario. Previously this method ignored ExamplesTable tags, so parsing a ScenarioResult from json always removed them, causing the issue. This required usage of exampleTableIndex to index the correct ExamplesTable, which is why the first part had to be done before fixing this. 
 
 ## Requirements for the new feature
 
