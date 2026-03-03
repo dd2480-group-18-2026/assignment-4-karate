@@ -5,6 +5,10 @@ import com.intuit.karate.Runner;
 import com.intuit.karate.core.Scenario;
 import com.intuit.karate.core.ScenarioResult;
 import com.intuit.karate.core.Step;
+<<<<<<< HEAD
+=======
+
+>>>>>>> issue-4
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ArrayList;
@@ -56,6 +60,12 @@ class RetryTest {
         assertEquals(0, results.getFailCount(), results.getErrorMessages());
     }
 
+<<<<<<< HEAD
+=======
+	/*
+	Maps to requirement "Retry Example Tables"
+	*/
+>>>>>>> issue-4
 	@Test
 	void testMultipleExampleTablesTitles() {
 		Results results = Runner.path("classpath:com/intuit/karate/core/retry/test-multiple-examples-tables.feature")
@@ -73,6 +83,12 @@ class RetryTest {
 		assertEquals("print \"example 2\"", stepText.get(1));
 	}
 
+<<<<<<< HEAD
+=======
+	/*
+	Maps to requirement "Persist Example Tags"
+	*/
+>>>>>>> issue-4
 	@Test
 	void testMultipleExampleTablesTags() {
         Results results = Runner.path("classpath:com/intuit/karate/core/retry/test-multiple-examples-tables.feature")
