@@ -19,6 +19,7 @@ import org.slf4j.LoggerFactory;
  * @author pthomas3
  */
 class RetryTest {
+    
     static final Logger logger = LoggerFactory.getLogger(RetryTest.class);   
 
     @Test
