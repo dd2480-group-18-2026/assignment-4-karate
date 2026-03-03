@@ -120,10 +120,10 @@ Worth noting is that the issue also came with a tiny project used for reproducin
     - Debugging as part of investigation: 1h
 
 **Tim: 20.5h**
-1. plenary discussions/meetings: 4h 
+1. plenary discussions/meetings: 3h 
     - Meetings with group 3h
 
-2. discussions within parts of the group: 3h 
+2. discussions within parts of the group: 4h 
     - Discord discussions 1h
     - PR reviews 3h
 
