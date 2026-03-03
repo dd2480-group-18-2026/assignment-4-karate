@@ -57,6 +57,9 @@ class RetryTest {
         assertEquals(0, results.getFailCount(), results.getErrorMessages());
     }
 
+	/*
+	Maps to requirement "Retry Example Tables"
+	*/
 	@Test
 	void testMultipleExampleTablesTitles() {
 		Results results = Runner.path("classpath:com/intuit/karate/core/retry/test-multiple-examples-tables.feature")
@@ -74,6 +77,9 @@ class RetryTest {
 		assertEquals("print \"example 2\"", stepText.get(1));
 	}
 
+	/*
+	Maps to requirement "Persist Example Tags"
+	*/
 	@Test
 	void testMultipleExampleTablesTags() {
         Results results = Runner.path("classpath:com/intuit/karate/core/retry/test-multiple-examples-tables.feature")
