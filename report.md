@@ -63,16 +63,17 @@ Worth noting is that the issue also came with a tiny project used for reproducin
 8. running code: 1h
     - Debugging: 1h
 
-**Eliott: 17h**
+**Eliott: 20.5h**
 1. plenary discussions/meetings: 3h
     - Meetings with group: 3h
 
-2. discussions within parts of the group: 2.5h
+2. discussions within parts of the group: 3.5h
     - PR reviews: 0.5h
-    - Discord discussion: 2h
+    - Discord discussion: 3h
 
-3. reading documentation: 2h
+3. reading documentation: 3h
     - Browse issues in the repo: 2h
+    - Reading karate documentation: 1h
 
 4. configuration and setup: 1h
     - Setting up local version of karate and template: 1h
@@ -86,8 +87,9 @@ Worth noting is that the issue also came with a tiny project used for reproducin
 7. writing code: 4h
     - Writing code and cleaning things up: 4h
 
-8. running code: 1h
-    - Debugging: 1h
+8. running code: 2.5h
+    - Debugging: 2h
+    - Running tests: 0.5h
 
 **Felix: 21h**
 1. plenary discussions/meetings: 3h
