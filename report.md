@@ -80,7 +80,20 @@ To resolve the tags part of the issue, the first part of the issue first had to 
 
 ### 1. Report scenario outline example results once
 
-When executing a feature containing a scenario outline with multiple example tables, each example is reported as a scenario in the report. When retrying a subset of these scenarios (the reason for doing this might be that they have failed), the successful scenarios should remain in the report and the failed ones should be updated with the new results. In other words, each example in the scenario outline should be shown exactly once in the report, with the latest result.
+#### Setup
+
+A `.feature` file containing a scenario outline with two examples tables with at least one example each. One column of the examples tables should contain a unique identfier for each example. There should exist exactly one step in the outline that prints the unique identifier.
+
+#### Actions
+
+1. Execute the feature tests by using `Runner` and specifying the feature file path and then executing the run.
+2. Get the results of the first run using `Results.getScenarioResults()`
+3. For each result rerun the generated scenario
+4. For each rerun result store the generated print step2. Rerun the tests
+
+#### Expectations
+
+For each example there exists exactly one generated scenario step printing the example identfier.
 
 #### Test
 
@@ -89,6 +102,21 @@ To test this requirement [testMultipleExampleTablesTitles()](https://github.com/
 ### 2. Persist example tags
 
 When executing a feature containing a scenario outline with at least one example, any potential tags on the example table are shown in the report. When rerunning any example within that feature, the example table tags should persist in the report.
+
+#### Setup
+
+A `.feature` file containing a scenario outline with two examples tables with at least one example each. Each examples table must have a tag.
+
+#### Actions
+
+1. Execute the feature tests by using `Runner` and specifying the feature file path and then executing the run.
+2. Get the results of the first run using `Results.getScenarioResults()`
+3. For each result rerun the generated scenario
+4. For each rerun result store tags of the generated scenario
+
+#### Expectations
+
+The tags from each scenario should contain the tag for examples table from which the scenario was created.
 
 #### Test
 
