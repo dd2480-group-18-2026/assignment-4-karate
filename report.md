@@ -36,7 +36,7 @@ Worth noting is that the issue also came with a tiny project used for reproducin
 
 ## Effort spent
 
-**August: 23h**
+**August: 22h**
 1. plenary discussions/meetings: 3h
     - Meetings with group: 3h
 
@@ -48,12 +48,12 @@ Worth noting is that the issue also came with a tiny project used for reproducin
     - Browse issues in the repo: 1h
     - Looking through karate documentation: 3h
 
-4. configuration and setup: 5h
+4. configuration and setup: 1h
     - Setting up local version of karate and template: 1h
-    - Making bug reproduction repo use local karate version (issues with maven): 4h
 
-5. analyzing code/output: 5h
-    - Investigating code output and report: 5h
+5. analyzing code/output: 8h
+    - Investigating code output and report: 4h
+    - Analyzing code structure and logic: 4h
 
 6. writing documentation: 0h
 
