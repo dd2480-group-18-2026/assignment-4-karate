@@ -173,7 +173,7 @@ To resolve the tags part of the issue, the first part of the issue first had to 
 
 ## Requirements for the new feature
 
-### 1. Report scenario outline example results once
+### 1. Retry Example Tables
 
 #### Setup
 
@@ -194,7 +194,7 @@ For each example there exists exactly one generated scenario step printing the e
 
 To test this requirement [testMultipleExampleTablesTitles()](https://github.com/dd2480-group-18-2026/assignment-4-karate/blob/59f9e0cb6be7721c2ac0d00b53c6448511fa75b2/karate-core/src/test/java/com/intuit/karate/core/retry/RetryTest.java#L61) was implemented in the RetryTest class. It checks that retrying scenarios does not affect the order or content of scenarios generated from tests when using multiple examples tables. The test fails before our patch, and passes after including it, as expected.
 
-### 2. Persist example tags
+### 2. Persist Example Tags
 
 When executing a feature containing a scenario outline with at least one example, any potential tags on the example table are shown in the report. When rerunning any example within that feature, the example table tags should persist in the report.
 
