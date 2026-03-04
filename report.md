@@ -192,7 +192,7 @@ For each example there exists exactly one generated scenario step printing the e
 
 #### Test
 
-To test this requirement [testMultipleExampleTablesTitles()](https://github.com/dd2480-group-18-2026/assignment-4-karate/blob/59f9e0cb6be7721c2ac0d00b53c6448511fa75b2/karate-core/src/test/java/com/intuit/karate/core/retry/RetryTest.java#L61) was implemented in the RetryTest class. It checks that retrying scenarios does not affect the order or content of scenarios generated from tests when using multiple examples tables. The test fails before our patch, and passes after including it, as expected.
+To test this requirement [testMultipleExampleTablesTitles()](https://github.com/dd2480-group-18-2026/assignment-4-karate/blob/c3041592a50d23b27dd0dd217e30e92885ada7ee/karate-core/src/test/java/com/intuit/karate/core/retry/RetryTest.java#L64) was implemented in the RetryTest class. This test references back to the requirement in a comment. It checks that retrying scenarios does not affect the order or content of scenarios generated from tests when using multiple examples tables. The test fails before our patch, and passes after including it, as expected.
 
 ### 2. Persist example tags
 
@@ -215,7 +215,7 @@ The tags from each scenario should contain the tag for examples table from which
 
 #### Test
 
-To test this requirement [testMultipleExampleTablesTags()](https://github.com/dd2480-group-18-2026/assignment-4-karate/blob/59f9e0cb6be7721c2ac0d00b53c6448511fa75b2/karate-core/src/test/java/com/intuit/karate/core/retry/RetryTest.java#L78) was implemented in the RetryTest class. It checks that retrying scenarios when using multiple examples tables does not remove or alter tags. This test fails before includng our patch, and passes afterwards, as expected.
+To test this requirement [testMultipleExampleTablesTags()](https://github.com/dd2480-group-18-2026/assignment-4-karate/blob/c3041592a50d23b27dd0dd217e30e92885ada7ee/karate-core/src/test/java/com/intuit/karate/core/retry/RetryTest.java#L84) was implemented in the RetryTest class. This test references back to the requirement in a comment. It checks that retrying scenarios when using multiple examples tables does not remove or alter tags. This test fails before includng our patch, and passes afterwards, as expected.
 
 ## Code changes
 
